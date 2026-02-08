@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AnyIdPhoto | Passport Photo Online Maker</title>
+    <meta
+      name="description"
+      content="AnyIdPhoto helps users generate compliant passport, visa, and ID photos from a single casual photo."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:title" content="AnyIdPhoto | Passport Photo Online Maker" />
+    <meta
+      property="og:description"
+      content="Generate passport, visa, and ID photos online from one casual photo."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://anyidphoto.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f7f6f3;
+        --ink: #1f2a37;
+        --muted: #5e6b78;
+        --card: rgba(255, 255, 255, 0.72);
+        --line: rgba(31, 42, 55, 0.12);
+        --brand: #007b86;
+        --brand-strong: #005f68;
+        --accent: #ff8a3d;
+        --radius: 18px;
+        --shadow: 0 18px 45px rgba(14, 31, 46, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Manrope", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 18% -10%, rgba(255, 138, 61, 0.28), transparent 38%),
+          radial-gradient(circle at 85% 10%, rgba(0, 123, 134, 0.2), transparent 42%),
+          linear-gradient(180deg, #fcfbf8, var(--bg));
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .wrap {
+        width: min(1080px, 92vw);
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+        background: rgba(252, 251, 248, 0.78);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .topbar-row {
+        min-height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        text-decoration: none;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--accent), #ffc36f);
+        box-shadow: 0 0 0 6px rgba(255, 138, 61, 0.17);
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        border-radius: 999px;
+        padding: 10px 18px;
+        border: 1px solid transparent;
+        font-weight: 600;
+        font-size: 14px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      }
+
+      .btn-primary {
+        color: #fff;
+        background: linear-gradient(140deg, var(--brand), #0496a5);
+        box-shadow: 0 10px 24px rgba(0, 123, 134, 0.28);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-ghost {
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.75);
+      }
+
+      .hero {
+        padding: 76px 0 38px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 30px;
+        align-items: center;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0 0 12px;
+        font-family: "Space Grotesk", sans-serif;
+        line-height: 1.1;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.35rem);
+      }
+
+      h2 {
+        font-size: clamp(1.4rem, 3vw, 2rem);
+      }
+
+      .lead {
+        margin: 0;
+        color: var(--muted);
+        max-width: 56ch;
+        font-size: clamp(1rem, 2vw, 1.1rem);
+      }
+
+      .badge-row {
+        margin-top: 22px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .badge {
+        padding: 7px 13px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.72);
+        font-size: 13px;
+      }
+
+      .panel {
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--card);
+        box-shadow: var(--shadow);
+      }
+
+      .mini {
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 6px;
+      }
+
+      .stats {
+        margin-top: 14px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .stat {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+
+      .stat strong {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.3rem;
+      }
+
+      .sections {
+        padding: 14px 0 70px;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .card {
+        padding: 18px;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.76);
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .spacer {
+        height: 16px;
+      }
+
+      .faq {
+        display: grid;
+        gap: 10px;
+      }
+
+      details {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.72);
+        padding: 12px 14px;
+      }
+
+      summary {
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      details p {
+        margin: 10px 0 0;
+        color: var(--muted);
+      }
+
+      .notice {
+        margin-top: 14px;
+        font-size: 0.95rem;
+        color: #3e4b59;
+      }
+
+      .source-safe {
+        margin-top: 18px;
+        border-left: 4px solid var(--brand);
+        padding: 10px 12px;
+        background: rgba(0, 123, 134, 0.08);
+        border-radius: 8px;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 20px 0 36px;
+        color: #627080;
+        font-size: 14px;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.45s ease, transform 0.45s ease;
+      }
+
+      .reveal.on {
+        opacity: 1;
+        transform: none;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+
+        .actions {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="wrap topbar-row">
+        <a class="brand" href="https://anyidphoto.com" aria-label="AnyIdPhoto home">
+          <span class="dot" aria-hidden="true"></span>
+          <span>AnyIdPhoto</span>
+        </a>
+        <nav class="actions" aria-label="Quick links">
+          <a class="btn btn-ghost" href="https://anyidphoto.com/about">About</a>
+          <a class="btn btn-ghost" href="https://anyidphoto.com/privacy">Privacy</a>
+          <a class="btn btn-primary" href="https://anyidphoto.com">Open Website</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="reveal">
+            <h1>Make Passport Photos Online From One Casual Photo</h1>
+            <p class="lead">
+              AnyIdPhoto helps users create compliant passport, visa, and ID photos with fast AI-assisted framing,
+              background cleanup, and export-ready formats.
+            </p>
+            <div class="badge-row" aria-label="Supported formats">
+              <span class="badge">2x2 inches</span>
+              <span class="badge">35x45 mm</span>
+              <span class="badge">4x6 print sheet</span>
+              <span class="badge">Custom ID formats</span>
+            </div>
+            <div class="badge-row">
+              <a class="btn btn-primary" href="https://anyidphoto.com">Start on AnyIdPhoto.com</a>
+              <a class="btn btn-ghost" href="mailto:help@anyidphoto.com">Contact Support</a>
+            </div>
+          </div>
+          <aside class="panel reveal" aria-label="Public product snapshot">
+            <h2>Public Product Snapshot</h2>
+            <p class="mini">This showcase page contains only public-facing information.</p>
+            <div class="stats">
+              <div class="stat">
+                <strong>39</strong>
+                <span>localized route groups</span>
+              </div>
+              <div class="stat">
+                <strong>40</strong>
+                <span>hreflang values including x-default</span>
+              </div>
+              <div class="stat">
+                <strong>0</strong>
+                <span>core source code exposed in this repo</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="sections reveal" aria-labelledby="why-title">
+        <h2 id="why-title">Why Users Choose AnyIdPhoto</h2>
+        <div class="grid-3">
+          <article class="card">
+            <h3>No Studio Visit</h3>
+            <p>Create passport and visa photos online without in-store retake loops.</p>
+          </article>
+          <article class="card">
+            <h3>Compliance-Oriented</h3>
+            <p>Built around document size and framing requirements for common ID use cases.</p>
+          </article>
+          <article class="card">
+            <h3>Digital + Print</h3>
+            <p>Download digital files and print-ready layouts from one workflow.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="sections reveal" aria-labelledby="sizes-title">
+        <h2 id="sizes-title">Supported Sizes and Examples</h2>
+        <div class="grid-3">
+          <article class="card">
+            <h3>US Passport</h3>
+            <p>2x2 inches</p>
+          </article>
+          <article class="card">
+            <h3>Visa Formats</h3>
+            <p>35x45 mm (for example Canada Visa, Schengen Visa)</p>
+          </article>
+          <article class="card">
+            <h3>Custom Output</h3>
+            <p>Custom ID specifications plus 4x6 print sheet option</p>
+          </article>
+        </div>
+        <p class="notice">
+          Final requirements can vary by issuing authority. Always verify specs before submission.
+        </p>
+      </section>
+
+      <section class="sections reveal" aria-labelledby="faq-title">
+        <h2 id="faq-title">FAQ</h2>
+        <div class="faq">
+          <details>
+            <summary>Can I start from a normal daily photo?</summary>
+            <p>Yes. The product is designed to convert one casual photo into passport/ID style output.</p>
+          </details>
+          <details>
+            <summary>Do I get both digital and print files?</summary>
+            <p>Yes. Public product information includes digital output and print-ready layouts.</p>
+          </details>
+          <details>
+            <summary>Is this repository exposing core logic?</summary>
+            <p>No. This repository is intentionally public-facing only.</p>
+          </details>
+        </div>
+        <div class="source-safe">
+          <strong>Security boundary:</strong> No private business logic, model pipeline code, or deployment configuration
+          is included here.
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div>Website: <a href="https://anyidphoto.com">anyidphoto.com</a> | Support: <a href="mailto:help@anyidphoto.com">help@anyidphoto.com</a></div>
+        <div class="mini">© <span id="year"></span> AnyIdPhoto. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("on");
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
+

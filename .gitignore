@@ -9,8 +9,8 @@
 !README.md
 !SECURITY.md
 !LICENSE
+!index.html
 
 # Optional: allow public assets folder (logo/screenshot) if needed
 !assets/
 !assets/**
-
