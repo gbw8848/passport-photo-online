@@ -1,0 +1,16 @@
+# Public-only repository mode:
+# ignore everything by default, then explicitly allow public files.
+*
+
+# Keep git control files
+!.gitignore
+
+# Public docs
+!README.md
+!SECURITY.md
+!LICENSE
+
+# Optional: allow public assets folder (logo/screenshot) if needed
+!assets/
+!assets/**
+
